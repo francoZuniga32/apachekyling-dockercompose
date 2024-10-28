@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  kylin:
+    image: apachekylin/apache-kylin-standalone:5.0.0-GA
+    container_name: Kylin
+    hostname: localhost
+    environment:
+      - TZ=UTC
+    volumes:
+      - ./data:/home/data
+    ports:
+      - "7070:7070"
+      - "8088:8088"
+      - "9870:9870"
+      - "8032:8032"
+      - "8042:8042"
+      - "2181:2181"
+    deploy:
+      resources:
+        limits:
+          memory: 10G
+    restart: always
